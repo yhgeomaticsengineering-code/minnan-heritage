@@ -12,7 +12,7 @@ const workId = params.get('id');
 const data = await fetch('data/works.json', { cache: 'no-cache' }).then(r => r.json());
 const work = data.works.find(w => w.id === workId) || data.works[0];
 const uploader = data.uploaders.find(u => u.id === work.uploaderId) || {};
-document.title = `${work.title} — 閩南數位文物展示平台`;
+document.title = `${work.title} — 114-2 數位博物館課程成果`;
 
 $('info').innerHTML = `
   <h1>${work.title}</h1>
