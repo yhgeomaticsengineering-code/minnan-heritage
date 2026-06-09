@@ -25,7 +25,12 @@ body {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
-.container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+.container {
+  max-width: var(--maxw); margin: 0 auto;
+  /* respect notch / rounded-corner safe areas on mobile */
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
 
 /* ---------- Header ---------- */
 .site-header {
@@ -62,7 +67,9 @@ img { max-width: 100%; display: block; }
 .hero p.intro { color: var(--muted); max-width: 640px; margin: 0; }
 
 /* ---------- Section ---------- */
-.section { padding: 48px 0; }
+/* top/bottom only — never zero out .container's horizontal padding
+   (work.html uses class="container section" on the SAME element) */
+.section { padding-top: 48px; padding-bottom: 48px; }
 .section-title {
   display: flex; align-items: baseline; gap: 12px; margin: 0 0 24px;
   font-size: 20px; letter-spacing: 1px;
@@ -169,7 +176,7 @@ img { max-width: 100%; display: block; }
   .work-layout { grid-template-columns: 1fr; }
   .viewer-wrap { aspect-ratio: 1/1; min-height: 320px; }
   .hero { padding: 44px 0 30px; }
-  .section { padding: 34px 0; }
+  .section { padding-top: 34px; padding-bottom: 34px; }
 }
 @media (max-width: 480px) {
   .brand small { display: none; }
