@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>作品展示 — 閩南數位文物展示平台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="seal">閩</span>
+        <span>閩南數位文物展示平台<small>MINNAN DIGITAL HERITAGE</small></span>
+      </a>
+      <a class="nav-back" href="index.html">← 返回展廳</a>
+    </div>
+  </header>
+
+  <main class="container section">
+    <div class="work-layout">
+      <!-- 3D viewer -->
+      <div>
+        <div class="viewer-wrap">
+          <canvas id="viewer"></canvas>
+          <div class="viewer-hint">拖曳旋轉 · 滾輪／雙指縮放</div>
+          <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <div class="pct" id="loader-pct">載入模型中…</div>
+          </div>
+          <div class="viewer-toolbar">
+            <button id="btn-rotate" title="自動旋轉">↻</button>
+            <button id="btn-reset" title="重置視角">⌂</button>
+            <button id="btn-wire" title="線框模式">◫</button>
+            <button id="btn-full" title="全螢幕">⛶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info panel -->
+      <aside class="work-info" id="info"></aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 閩南數位文物展示平台</span>
+      <span>三維模型 · 攝影測量數位典藏</span>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/viewer.js"></script>
+</body>
+</html>
