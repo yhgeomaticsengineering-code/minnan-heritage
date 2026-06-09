@@ -29,7 +29,7 @@
           <div class="meta">${[w.location, w.date].filter(Boolean).join(' · ')}</div>
           <div class="tags">${tags}</div>
           <div class="tags" style="margin-top:12px">
-            <span class="meta">展示者：${up.name || '—'}</span>
+            <span class="meta">展示單位：${up.name || '—'}</span>
           </div>
         </div>
       </a>`;
@@ -39,13 +39,15 @@
   const ug = document.getElementById('uploaders-grid');
   ug.innerHTML = data.uploaders.map(u => {
     const n = data.works.filter(w => w.uploaderId === u.id).length;
+    const students = (u.students || []).map(s => `<span class="tag">${s}</span>`).join('');
     return `
       <div class="card"><div class="body">
         <div class="uploader">
           <div class="ava">${initials(u.name)}</div>
           <div class="who"><b>${u.name}</b><span>${u.title || ''}</span></div>
         </div>
-        <p class="meta" style="margin:14px 0 0">${u.bio || ''}</p>
+        ${u.bio ? `<p class="meta" style="margin:14px 0 0">${u.bio}</p>` : ''}
+        ${students ? `<p class="meta" style="margin:14px 0 6px">學生</p><div class="tags">${students}</div>` : ''}
         <div class="tags" style="margin-top:12px"><span class="tag">${n} 件作品</span></div>
       </div></div>`;
   }).join('');

@@ -17,7 +17,8 @@ document.title = `${work.title} — 閩南數位文物展示平台`;
 $('info').innerHTML = `
   <h1>${work.title}</h1>
   <div class="sub-en">${work.subtitle || ''}</div>
-  <div class="info-row"><span class="k">展示者</span><span class="v">${uploader.name || '—'}</span></div>
+  <div class="info-row"><span class="k">展示單位</span><span class="v">${uploader.name || '—'}</span></div>
+  ${uploader.students && uploader.students.length ? `<div class="info-row"><span class="k">學生</span><span class="v">${uploader.students.join('、')}</span></div>` : ''}
   ${work.location ? `<div class="info-row"><span class="k">地點</span><span class="v">${work.location}</span></div>` : ''}
   ${work.date ? `<div class="info-row"><span class="k">建置日期</span><span class="v">${work.date}</span></div>` : ''}
   ${work.method ? `<div class="info-row"><span class="k">建置方式</span><span class="v">${work.method}</span></div>` : ''}
