@@ -5,6 +5,9 @@
   const initials = (name) => (name || '?').trim().slice(0, 1);
 
   // Hero
+  const courseEl = document.getElementById('hero-course');
+  if (data.site.course) courseEl.textContent = data.site.course;
+  else courseEl.style.display = 'none';
   document.getElementById('hero-sub').textContent = data.site.subtitle || '';
   document.getElementById('hero-title').textContent = data.site.title || '';
   document.getElementById('hero-intro').textContent = data.site.intro || '';

@@ -2,6 +2,7 @@
   "site": {
     "title": "閩南數位文物展示平台",
     "subtitle": "Minnan Digital Heritage — 三維模型線上展廳",
+    "course": "114-2 數位博物館課程成果",
     "intro": "以攝影測量（Photogrammetry）建置的閩南文物三維模型典藏。可在瀏覽器中自由旋轉、縮放，支援手機與平板瀏覽。"
   },
   "uploaders": [

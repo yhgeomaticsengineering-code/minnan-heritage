@@ -50,7 +50,7 @@ img { max-width: 100%; display: block; }
   display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 18px;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
 }
-.brand small { display:block; color: var(--muted); font-weight: 400; font-size: 11px; letter-spacing: 1px; }
+.brand small { display:block; color: var(--gold-soft); font-weight: 600; font-size: 11px; letter-spacing: 1px; }
 .nav-back { color: var(--gold-soft); font-size: 14px; }
 .nav-back:hover { color: var(--gold); }
 
@@ -61,6 +61,13 @@ img { max-width: 100%; display: block; }
   background:
     radial-gradient(1200px 400px at 80% -10%, rgba(200,168,106,.10), transparent 60%),
     radial-gradient(900px 380px at 10% 0%, rgba(168,80,58,.10), transparent 60%);
+}
+.hero-course {
+  display: inline-block; margin-bottom: 18px;
+  background: linear-gradient(135deg, rgba(200,168,106,.20), rgba(168,80,58,.16));
+  border: 1px solid var(--gold);
+  color: var(--gold-soft); font-weight: 700; font-size: 13px; letter-spacing: 1.5px;
+  padding: 7px 16px; border-radius: 999px;
 }
 .hero h1 { font-size: clamp(28px, 5vw, 46px); margin: 0 0 12px; letter-spacing: 1px; }
 .hero .sub { color: var(--gold-soft); font-size: 15px; letter-spacing: 2px; margin-bottom: 18px; }
@@ -179,6 +186,7 @@ img { max-width: 100%; display: block; }
   .section { padding-top: 34px; padding-bottom: 34px; }
 }
 @media (max-width: 480px) {
-  .brand small { display: none; }
+  .brand { font-size: 15px; }
+  .brand small { font-size: 10px; letter-spacing: .5px; }
   .grid { grid-template-columns: 1fr; }
 }
