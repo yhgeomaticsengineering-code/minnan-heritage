@@ -21,7 +21,6 @@ $('info').innerHTML = `
   ${uploader.students && uploader.students.length ? `<div class="info-row"><span class="k">學生</span><span class="v">${uploader.students.join('、')}</span></div>` : ''}
   ${work.location ? `<div class="info-row"><span class="k">地點</span><span class="v">${work.location}</span></div>` : ''}
   ${work.date ? `<div class="info-row"><span class="k">建置日期</span><span class="v">${work.date}</span></div>` : ''}
-  ${work.method ? `<div class="info-row"><span class="k">建置方式</span><span class="v">${work.method}</span></div>` : ''}
   ${work.coordinates ? `<div class="info-row"><span class="k">座標</span><span class="v">${work.coordinates}</span></div>` : ''}
   <div class="panel-tags">${(work.tags || []).map(t => `<span class="tag">${t}</span>`).join('')}</div>
   <p class="desc">${work.description || ''}</p>
