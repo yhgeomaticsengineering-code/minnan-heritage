@@ -52,16 +52,17 @@ site/
 ```bash
 cd tools
 npm install                 # 第一次才需要（obj2gltf、@gltf-transform/cli）
-# 用法： bash convert.sh <OBJ的Data資料夾> <輸出.glb> [貼圖最大邊長]
-bash convert.sh "../2026.6.6賢聚泰安宮王忠孝大人神像/OBJ/Data" ../site/models/wang-zhongxiao.glb
+# 用法： bash convert.sh <OBJ的Data資料夾> <輸出.glb> [貼圖最大邊長] [幾何保留比例]
+bash convert.sh "../2026.6.6賢聚泰安宮王忠孝大人神像/OBJ/Data" ../site/models/wang-zhongxiao.glb 2048 0.45
 bash convert.sh "../2026.6.7張苗公/obj/Data" ../site/models/zhang-miao-gong.glb 4096
 ```
 
-腳本流程：OBJ → GLB → 合併 → 合併場景 → 縮貼圖 → 焊接頂點 → Draco 壓縮。同時支援「多塊 tile」與「單一 OBJ」兩種匯出。
+腳本流程：OBJ → GLB → 合併 → 合併場景 → 縮貼圖 → 焊接頂點 → （可選）簡化幾何 → Draco 壓縮。同時支援「多塊 tile」與「單一 OBJ」兩種匯出。
 
 - 幾何用 Draco 14-bit 量化壓縮（肉眼幾乎無損）。
-- 貼圖縮到指定最大邊長（預設 4096），避免 8K 貼圖在手機上跑不動。
-- 實例：王忠孝 228MB→30MB（14 塊合併）；張苗公 116MB→8.4MB（8K 貼圖縮 4K）。
+- 貼圖縮到指定最大邊長，避免 8K 貼圖在手機上跑不動。
+- 第 4 參數 = 幾何保留比例（0–1）：面數太多會載入卡頓，用 meshopt 簡化並鎖邊界（不會產生裂縫）。
+- 實例：王忠孝 228MB→9.5MB（14 塊合併、262萬面簡化到118萬、貼圖縮2K）；張苗公 116MB→8.4MB（8K 貼圖縮 4K）。
 - ⚠️ 關鍵：`gltf-transform merge` 會把每塊 tile 各自保留成獨立 scene，而瀏覽器只載入「預設 scene」→ 只會顯示 1 塊。`tools/merge-scenes.mjs` 會把所有 scene 的節點併進同一個 scene，確保整個模型完整顯示。
 
 ### 調整模型方向與預設視角
